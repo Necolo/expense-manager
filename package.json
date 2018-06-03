@@ -1,0 +1,8 @@
+{
+  "name": "expense-manager",
+  "version": "1.0.0",
+  "main": "build/index.js",
+  "repository": "https://github.com/Necolo/expense-manager.git",
+  "author": "Necolo Lv.C",
+  "license": "MIT"
+}
