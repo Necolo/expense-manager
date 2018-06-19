@@ -1,0 +1,42 @@
+export enum CurrencyEnum {
+    cny,
+    usd,
+    jpy,
+    hkd,
+}
+
+export interface ProtocolInterface {
+    expense:{
+        server:{
+            value:number;
+            currency:CurrencyEnum;
+            device:string;
+            tag:string[]|string;
+            time:number;
+            location:string;
+            inputs:string;
+        };
+        client:{
+            ok:boolean;
+        };
+    };
+    findTag:{
+        server:{
+            device:string;
+            inputs:string;
+        };
+        client:{
+            ok:boolean;
+            tag:string;
+        };
+    };
+    setDeviceUser:{
+        server:{
+            device:string;
+            username:string;
+        };
+        client:{
+            ok:boolean;
+        };
+    };
+}
