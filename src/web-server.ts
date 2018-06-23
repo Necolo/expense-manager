@@ -4,6 +4,7 @@ import * as route from 'koa-route';
 
 import { logger } from './server/logger';
 import { ServerSocket } from './socket/server-net';
+import createAppServer = require('./server');
 
 const app = new Koa();
 const PORT = 3000;
@@ -13,14 +14,14 @@ app.use(route.get('/', (ctx) => {
     ctx.body = 'hello world';
 }));
 
-app.on('error', (err, ctx) => {
+app.on('error', (err, ctx) => {{
     console.error('server error', err);
 });
 
 const server = app.listen(PORT);
 
 const serverSocket = new ServerSocket(server);
-// createAppServer(serverSocket, new ServerHanlder());
+createAppServer(serverSocket);
 
 console.log(`listening on: http://${ip.address()}:${PORT}`);
 

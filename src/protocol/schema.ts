@@ -1,11 +1,18 @@
 export enum CurrencyEnum {
-    cny,
-    usd,
-    jpy,
-    hkd,
+    CNY,
+    USD,
+    JPY,
+    HKD,
 }
 
-export interface ProtocolInterface {
+export enum Protocol {
+    expense,
+    findTag,
+    setDeviceUser,
+    length,
+}
+
+export interface ProtocolSchema {
     expense:{
         server:{
             value:number;
@@ -40,3 +47,5 @@ export interface ProtocolInterface {
         };
     };
 }
+
+export type ProtocolMethod = keyof ProtocolSchema;

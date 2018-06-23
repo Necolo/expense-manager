@@ -1,4 +1,4 @@
-export enum RouteEnum {
+export enum Route {
     RECORD,
     SETTING,
     TRANSATION,
@@ -8,7 +8,7 @@ export enum RouteEnum {
 }
 
 export class ClientState {
-    public route:RouteEnum = RouteEnum.RECORD;
+    public route:Route = Route.RECORD;
 
     constructor () {
 

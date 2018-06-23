@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ClientState, RouteEnum } from '../client/state';
+import { ClientState, Route } from '../client/state';
 import { Record } from './record';
 
 interface ContainerProps {
@@ -15,11 +15,11 @@ export class Container extends React.Component<ContainerProps, ContainerState> {
     public render () {
         const { state } = this.props;
         switch (state.route) {
-            case RouteEnum.RECORD:
+            case Route.RECORD:
                 return <Record state={state} />;
-            case RouteEnum.TRANSATION:
+            case Route.TRANSATION:
                 return <div></div>;
-            case RouteEnum.SETTING:
+            case Route.SETTING:
                 return <div></div>;
         }
     }
