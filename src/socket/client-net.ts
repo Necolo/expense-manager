@@ -5,10 +5,18 @@ export class ClientSocket implements SocketClientInterface {
     private ws:WebSocket;
     private onmessage:MessageHandler['client'] = {} as any;
 
-    constructor () {
+    constructor (runClient:() => void) {
         this.ws = new WebSocket(
             `${window.location.protocol === 'https:' ? 'wss:' : 'ws:'}//${window.location.host}`,
         );
+
+        this.ws.addEventListener('open', () => {
+            runClient();
+            this.ws.addEventListener('message', (event) => {
+                const { id, data } = JSON.parse(event.data);
+                this.onmessage[id](id, data);
+            });
+        });
     }
 
     public send<method extends keyof ProtocolSchema> (id:method, data:ProtocolSchema[method]['server']) {
