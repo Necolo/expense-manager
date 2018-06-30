@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ClientState, Route } from '../client/state';
-import { Record } from './record';
+import { ClientState, Page } from '../client/state';
+import { PageRecord } from './pages/record';
 
 interface ContainerProps {
     state:ClientState;
@@ -14,12 +14,12 @@ export class Container extends React.Component<ContainerProps, ContainerState> {
 
     public render () {
         const { state } = this.props;
-        switch (state.route) {
-            case Route.RECORD:
-                return <Record state={state} />;
-            case Route.TRANSATION:
+        switch (state.page) {
+            case Page.RECORD:
+                return <PageRecord state={state} />;
+            case Page.TRANSATION:
                 return <div></div>;
-            case Route.SETTING:
+            case Page.SETTING:
                 return <div></div>;
         }
     }
